@@ -87,24 +87,13 @@ class TestCascadeNet(TestCase):
         net.momentum_coefficent = 0.7
         net.learn_rate = 0.2
         error = net.get_error(XOR_INPUTS, XOR_TARGETS)
-        final_error = net.train(XOR_INPUTS, XOR_TARGETS, mini_batch_size=1, max_hidden_nodes=4, stop_error_threshold=0.5,
+        final_error = net.train(XOR_INPUTS, XOR_TARGETS, mini_batch_size=1, max_hidden_nodes=10, stop_error_threshold=0.5,
                                 max_iterations_per_epoch=50)
 
         print_results(net, XOR_INPUTS, XOR_TARGETS)
 
         self.assert_results(net, XOR_INPUTS, XOR_TARGETS)
         self.assertGreater(error, final_error)
-
-    # def test_xor_cascading_with_quick_prop(self):
-    #     net = self.CLASS(2, 1)
-    #     net.use_quick_prop = True
-    #     error = net.get_error(XOR_INPUTS, XOR_TARGETS)
-    #     final_error = net.train(XOR_INPUTS, XOR_TARGETS, max_hidden_nodes=4, stop_error_threshold=0.5)
-    #
-    #     print_results(net, XOR_INPUTS, XOR_TARGETS)
-    #
-    #     self.assert_results(net, XOR_INPUTS, XOR_TARGETS)
-    #     self.assertGreater(error, final_error)
 
     def test_double_xor_cascading(self):
         net = self.CLASS(3, 1, num_candidate_nodes=8)
