@@ -9,7 +9,8 @@ from pso import particle_swarm_optimize
 
 
 def d_tanh(y):
-    return 1.0 - y * y
+    x=math.tanh(y)
+    return 1.0 - x * x
 
 
 def logistic(y):
